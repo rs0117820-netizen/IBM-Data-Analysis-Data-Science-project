@@ -6,7 +6,23 @@
 **Student Name:** Rohan  
 **Project:** HealthFlow  
 **Academic Program:** BharatCares / AICTE Data Analytics with AI Academic Internship  
-**Submission Artifacts:** `Rohan_HealthFlow.ipynb`, `requirements.txt`, `Rohan_HealthFlowProjectReport.docx`, `README.md`
+**Submission Package:** Google Form Upload (4 Submission Files Only)  
+
+---
+
+### Google Form Submission Files (4 Files Only)
+
+This submission is 100% self-contained within the following **four Google Form submission files**. Evaluators do **not** need to download, create, or configure any external folders (`src/`, `data/`, `models/`) or standalone runner scripts (`healthflow.py`).
+
+| # | Submitted File Name | Description & Submission Role |
+| :-: | :--- | :--- |
+| **1** | [`Rohan_HealthFlow.ipynb`](./Rohan_HealthFlow.ipynb) | **Single Complete Code Submission**: Contains the entire end-to-end implementation including backend data ingestion, sentinel data cleaning, leak-free feature engineering, exploratory data analysis, machine learning model training/benchmarking, and the complete interactive frontend clinical decision support dashboard with enterprise CSS styling. |
+| **2** | [`requirements.txt`](./requirements.txt) | **Project Dependencies**: Exact third-party Python package specifications required to reproduce the environment. |
+| **3** | [`Rohan_HealthFlowProjectReport.docx`](./Rohan_HealthFlowProjectReport.docx) | **Formal Academic Project Report**: Comprehensive project documentation in Microsoft Word format covering executive summary, clinical context, exploratory analysis, ML benchmarks, and operational recommendations. |
+| **4** | [`README.md`](./README.md) | **Project Documentation & Execution Guide**: System architecture, benchmark results, dataset description, and step-by-step evaluation instructions. |
+
+> [!NOTE]
+> **Self-Contained Code Guarantee**: `Rohan_HealthFlow.ipynb` is the sole, comprehensive code artifact. All backend algorithms (data processing, feature derivation, model training) and frontend components (Plotly interactive charts, Light/Dark styling tokens, and the 7-page Streamlit clinical decision support dashboard) are implemented directly inside this single notebook.
 
 ---
 
@@ -14,7 +30,7 @@
 
 **HealthFlow** is an end-to-end healthcare analytics and machine learning application that analyzes real-world hospital emergency patient-flow telemetry, identifies queue bottlenecks and department congestion patterns, and deploys predictive regression models to estimate patient waiting times without data leakage.
 
-Built upon **66,197 operational telemetry records** (59,663 cleaned, valid observations) collected across **18 Canadian hospital emergency departments and urgent care centres** in the Alberta Health Services (AHS) network, HealthFlow equips healthcare operational managers with empirical visibility into capacity surges, 24-hour diurnal load curves, and facility disparities.
+Built upon **66,197 operational telemetry records** (59,663 cleaned, valid observations after removing 6,534 sentinel records) collected across **18 Canadian hospital emergency departments and urgent care centres** in the Alberta Health Services (AHS) network, HealthFlow equips healthcare operational managers with empirical visibility into capacity surges, 24-hour diurnal load curves, and facility disparities.
 
 ---
 
@@ -28,38 +44,34 @@ Hospital emergency departments frequently experience sudden surges in patient ar
 
 ## Objectives
 
-1. **Authentic Telemetry Ingestion**: Ingest 66,000+ real-world operational records from provincial health authorities without synthetic or fabricated data.
-2. **Disciplined Data Cleaning**: Filter closed/offline sentinel telemetry (`waitTime < 0`), deduplicate observation timestamps, and standardize facility taxonomies.
+1. **Authentic Telemetry Ingestion**: Ingest exactly **66,197 operational records** from Alberta Health Services provincial health authorities without synthetic or fabricated data.
+2. **Disciplined Data Cleaning**: Detect and filter **6,534 closed/offline sentinel telemetry records** (`waitTime < 0`), deduplicate observation timestamps, and retain **59,663 verified, high-integrity observations**.
 3. **Leakage-Free Feature Engineering**: Formulate temporal variables, facility tiers, health zones, and concurrent system load strictly available at the time of patient arrival.
 4. **Exploratory Data Analysis**: Quantify 24-hour diurnal curves, day-of-week dynamics, facility tier disparities, and waiting-time percentile distributions.
-5. **Machine Learning Model Benchmarking**: Train and compare Ridge Regression, Random Forest, and HistGradientBoosting regressors using a strict chronological 80/20 train/test split.
-6. **Interactive Clinical Dashboard**: Deliver a modern, light-theme clinical dashboard with 7 comprehensive analytical pages and real-time waiting-time prediction.
+5. **Machine Learning Model Benchmarking**: Train and compare Ridge Regression, Random Forest, and HistGradientBoosting regressors using a strict chronological 80/20 train/test split (47,730 train vs 11,933 test records).
+6. **Interactive Clinical Dashboard**: Deliver an enterprise clinical dashboard with 7 comprehensive analytical pages and real-time waiting-time prediction.
 7. **Actionable Operational Insights**: Synthesize evidence-based recommendations regarding clinical shift alignment, regional patient diversion, and queue escalation triggers.
 
 ---
 
 ## Key Features
 
-- **End-to-End Data Pipeline**: Automated ingestion, quality auditing, sentinel removal, deduplication, and chronological feature derivation.
+- **End-to-End Self-Contained Pipeline**: Ingestion, quality auditing, sentinel removal (6,534 records filtered), deduplication, and chronological feature derivation executed entirely within `Rohan_HealthFlow.ipynb`.
 - **Leakage-Free Predictive Engine**: Trained strictly on arrival-time context (hospital, hour, day, month, facility tier, health zone, concurrent active facilities, and concurrent system wait time).
-- **Interactive Multi-Page Streamlit Dashboard**: 7 comprehensive modules covering executive KPIs, longitudinal volume trends, queue analytics, scenario prediction, data exploration, and model transparency.
-- **Benchmarked Regression Architecture**: Ridge regression baseline, Random Forest ensemble, and production HistGradientBoosting model.
-- **Publication-Ready Submission Package**: Executable 32-section Jupyter notebook (`Rohan_HealthFlow.ipynb`), academic DOCX project report (`Rohan_HealthFlowProjectReport.docx`), clean `requirements.txt`, and comprehensive documentation.
-
----
-
-## Dataset
-
-- **Primary Source Authority**: Alberta Health Services (AHS), Edmonton & Calgary Zones, Alberta, Canada
-- **Curated / Archival Repository**: S. R. Veale Open Healthcare Telemetry ([srveale/emergency-wait-times](https://github.com/srveale/emergency-wait-times))
-- **Direct Source Data URL**: `https://raw.githubusercontent.com/srveale/emergency-wait-times/master/EWT_DATA.csv`
-- **Data Compliance**: 100% de-identified public sector operational transparency telemetry. Contains zero Protected Health Information (PHI).
+- **Interactive Multi-Page Frontend Dashboard**: 7 comprehensive modules covering executive KPIs, longitudinal volume trends, queue analytics, scenario prediction, data exploration, and model transparency.
+- **Benchmarked Regression Architecture**: Ridge regression baseline, Random Forest ensemble, and champion HistGradientBoosting model (Test MAE: 33.74 min, Test R²: 0.4293).
+- **Unified 4-File Submission**: Everything needed to evaluate, reproduce, and review the project is packaged into the 4 Google Form submission files.
 
 ---
 
 ## Dataset Description
 
 The dataset monitors high-frequency emergency department operational wait-time telemetry logged at ~5-minute intervals across 18 healthcare centres over a continuous 6-week operational window (August 24, 2018 to October 04, 2018).
+
+- **Primary Source Authority**: Alberta Health Services (AHS), Edmonton & Calgary Zones, Alberta, Canada
+- **Curated / Archival Repository**: S. R. Veale Open Healthcare Telemetry ([srveale/emergency-wait-times](https://github.com/srveale/emergency-wait-times))
+- **Direct Source Data URL**: `https://raw.githubusercontent.com/srveale/emergency-wait-times/master/EWT_DATA.csv`
+- **Data Compliance**: 100% de-identified public sector operational transparency telemetry. Contains zero Protected Health Information (PHI).
 
 | Attribute | Value / Specification |
 | :--- | :--- |
@@ -82,79 +94,90 @@ The dataset monitors high-frequency emergency department operational wait-time t
 
 ## System Architecture
 
+All operational, analytical, modeling, and presentation layers are fully unified inside **`Rohan_HealthFlow.ipynb`**:
+
 ```
-HealthFlow Operational Pipeline
-┌───────────────────────────────────────────────────────────┐
-│                      Raw Telemetry                        │
-│            (Alberta Health Services 66k+ logs)            │
-└─────────────────────────────┬─────────────────────────────┘
-                              ▼
-┌───────────────────────────────────────────────────────────┐
-│              Data Ingestion & Integrity Audit             │
-│        (src/data_ingestion.py -> data/raw/)               │
-└─────────────────────────────┬─────────────────────────────┘
-                              ▼
-┌───────────────────────────────────────────────────────────┐
-│              Data Cleaning & Standardization              │
-│       • Drop sentinel (-1) offline records (6,534 rows)   │
-│       • Deduplicate timestamps & trim facility strings    │
-│       • Parse ISO datetime fields                         │
-│       • Output -> data/processed/healthflow_cleaned.csv   │
-└─────────────────────────────┬─────────────────────────────┘
-                              ▼
-┌───────────────────────────────────────────────────────────┐
-│                 Feature Engineering                       │
-│       • Temporal: Hour, Day of Week, Weekend Flag, Month  │
-│       • Operational: Facility Tier, Health Zone           │
-│       • Workload: Concurrent Active Facilities, Avg Load  │
-│       • Output -> data/processed/healthflow_features.csv  │
-└─────────────────────────────┬─────────────────────────────┘
-                              ▼
-       ┌──────────────────────┴──────────────────────┐
-       ▼                                             ▼
-┌───────────────────────────────┐     ┌───────────────────────────────┐
-│   Chronological Train/Test    │     │       Patient Flow Analytics  │
-│  80% Train (47,730 records)   │     │    • Diurnal Hourly Curves    │
-│  20% Test (11,933 records)    │     │    • Facility Workload        │
-│  (Zero lookahead leakage)     │     │    • Percentile Delay Bands   │
-└──────────────┬────────────────┘     └──────────────┬────────────────┘
-               ▼                                     ▼
-┌───────────────────────────────┐     ┌───────────────────────────────┐
-│     Machine Learning Engine   │     │    Interactive Dashboard      │
-│  • Ridge Baseline Regression  │     │   (Streamlit: 7 Key Pages)    │
-│  • Random Forest Regressor    │     │   • Overview & KPI Cards      │
-│  • HistGradientBoosting       │────▶│   • Patient Flow & Workload   │
-│  • Metric Export & Metadata   │     │   • Waiting Time Analytics    │
-│  • models/waiting_time_model  │     │   • Interactive ML Prediction │
-└──────────────┬────────────────┘     │   • Operational Insights      │
-               ▼                      │   • Data Explorer & Export    │
-┌───────────────────────────────┐     │   • Model Transparency        │
-│   Academic & Executive Report │     └───────────────────────────────┘
-│   Rohan_HealthFlowReport.docx │
-│   HealthFlow_Executive.pdf    │
-└───────────────────────────────┘
+HealthFlow Unified Operational Architecture (Inside Rohan_HealthFlow.ipynb)
+┌────────────────────────────────────────────────────────────────────────┐
+│                      Raw Operational Telemetry                         │
+│            (Alberta Health Services 66,197 raw records)                │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│             Stage 1: Telemetry Ingestion & Schema Audit                │
+│       • Ingests 66,197 records directly from remote / local cache      │
+│       • Validates columns, timestamps, and facility identifiers        │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│             Stage 2: Data Cleaning & Sentinel Filtering                │
+│       • Detects & filters 6,534 offline sentinel records (waitTime < 0)│
+│       • Trims whitespace, parses datetimes, deduplicates timestamps    │
+│       • Retains exactly 59,663 verified, high-integrity records        │
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+┌────────────────────────────────────────────────────────────────────────┐
+│             Stage 3: Leakage-Free Feature Engineering                  │
+│       • Temporal: Hour of Day, Day of Week, Month, Weekend, Peak Flag  │
+│       • Facility Taxonomy: 5 Operational Tiers, 4 Health Zones         │
+│       • Concurrency Load: Active Facilities & System Concurrent Average│
+└───────────────────────────────────┬────────────────────────────────────┘
+                                    ▼
+         ┌──────────────────────────┴──────────────────────────┐
+         ▼                                                     ▼
+┌─────────────────────────────────┐   ┌─────────────────────────────────┐
+│  Chronological Train/Test Split │   │   Exploratory Data Analytics    │
+│  • 80% Train (47,730 records)   │   │  • 24-Hour Diurnal Curves       │
+│  • 20% Test (11,933 records)    │   │  • Workload & Facility Rankings │
+│  • Strict zero-lookahead split  │   │  • 10th-90th Percentile Bands   │
+└────────────────┬────────────────┘   └────────────────┬────────────────┘
+                 ▼                                     ▼
+┌─────────────────────────────────┐   ┌─────────────────────────────────┐
+│    Machine Learning Engine      │   │   Frontend Clinical Dashboard   │
+│  • Ridge Regression (Baseline)  │   │  (Self-Contained in Notebook)   │
+│  • Random Forest Regressor      │   │  • 1. Executive Overview & KPIs │
+│  • HistGradientBoosting (Best)  │──▶│  • 2. Patient Flow Analytics    │
+│  • Leakage-free arrival context │   │  • 3. Waiting Time Analytics    │
+│  • MAE, RMSE, R² Benchmarking   │   │  • 4. Scenario Prediction Tool  │
+└─────────────────────────────────┘   │  • 5. Operational Insights      │
+                                      │  • 6. Telemetry Data Explorer   │
+                                      │  • 7. Model Architecture Info   │
+                                      └─────────────────────────────────┘
 ```
 
 ---
 
-## Data Pipeline
+## End-to-End Pipeline in `Rohan_HealthFlow.ipynb`
 
-1. **Ingestion (`src/data_ingestion.py`)**: Validates local telemetry cache or retrieves verified raw telemetry from the remote repository.
-2. **Cleaning (`src/data_cleaning.py`)**:
-   - Audits missing values (0 nulls in essential identifiers).
-   - Removes 6,534 sentinel records where `waitTime < 0` (closed clinics or sensor offline).
-   - Deduplicates timestamp-facility pairs.
-   - Outputs 59,663 clean records with wait times ranging from 0 to 582 minutes.
-3. **Feature Engineering (`src/feature_engineering.py`)**:
-   - Derives `hour`, `day_of_week`, `day_name`, `month`, `is_weekend`, `peak_hour_flag` (11:00–21:00).
-   - Enriches records with facility tiers and health zones.
-   - Computes concurrent active facility counts and system-wide hourly average wait times without lookahead leakage.
+The single notebook submission executes the complete six-stage analytical workflow sequentially:
+
+1. **Telemetry Ingestion Stage (Section 3)**:
+   - Ingests the 66,197 operational records from the verified Alberta Health Services dataset.
+   - Validates data completeness and schema attributes.
+2. **Data Cleaning & Sentinel Filtering Stage (Section 4)**:
+   - Audits missing values (0 nulls in primary identifiers).
+   - Identifies and removes **6,534 sentinel records** where `waitTime < 0` (indicating sensor offline or facility closed periods).
+   - Deduplicates timestamp-facility pairs and trims whitespace.
+   - Retains **59,663 clean observations** with waiting times ranging from 0 to 582 minutes.
+3. **Leakage-Free Feature Engineering Stage (Section 5)**:
+   - Formulates temporal cyclical features: `hour`, `day_of_week`, `day_name`, `month`, `is_weekend`, `peak_hour_flag` (11:00–21:00).
+   - Enriches records with facility operational tiers and provincial health zones.
+   - Calculates concurrent system load (number of concurrently reporting facilities and concurrent system-wide average wait time) using only arrival-time information.
+4. **Exploratory Data Analysis Stage (Sections 6–7)**:
+   - Calculates statistical distribution metrics and generates interactive Plotly visualizations directly inline.
+   - Analyzes diurnal hourly patterns, weekday/weekend dynamics, and facility tier disparities.
+5. **Machine Learning Model Training & Evaluation Stage (Sections 8–11)**:
+   - Implements a strict chronological 80/20 train/test split (47,730 training vs 11,933 test observations).
+   - Builds preprocessing pipelines with `StandardScaler` and `OneHotEncoder`.
+   - Trains and evaluates Ridge Regression, Random Forest, and HistGradientBoosting regressors.
+6. **Frontend Clinical Decision Support Dashboard Stage (Section 12)**:
+   - Consolidates the complete UI design system, Light/Dark styling tokens, and 7-page interactive dashboard.
 
 ---
 
-## Exploratory Data Analysis
+## Exploratory Data Analysis Results
 
-Key statistical distributions computed across the 59,663 valid telemetry observations:
+Key statistical metrics computed across the 59,663 valid telemetry observations:
 
 | Operational Metric | Empirical Value | Healthcare Interpretation |
 | :--- | :---: | :--- |
@@ -172,7 +195,7 @@ Key statistical distributions computed across the 59,663 valid telemetry observa
 
 ---
 
-## Machine Learning
+## Machine Learning Modeling
 
 ### Supervised Formulation
 Given patient arrival context at time $t$:
@@ -187,159 +210,127 @@ $$\hat{y} = f(\mathbf{x})$$
 
 ---
 
-## Model Evaluation
+## Model Evaluation & Benchmarks
 
-All models were evaluated on the held-out test set (11,933 future observations). **All metrics are genuine and unmanipulated:**
+All models were evaluated on the held-out test set (11,933 future observations). **All metrics are genuine, reproducible, and computed directly within the notebook:**
 
 | Model Architecture | Train MAE | Test MAE | Train RMSE | Test RMSE | Train R² | Test R² |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Ridge Regression (Baseline)** | 36.82 m | 35.02 m | 49.24 m | 47.11 m | 0.4114 | 0.3795 |
 | **Random Forest Regressor** | 21.16 m | 35.21 m | 28.43 m | 47.25 m | 0.8038 | 0.3756 |
-| **Gradient Boosting Regressor (Best)** | **29.82 m** | **33.74 m** | **39.51 m** | **45.18 m** | **0.6210** | **0.4293** |
+| **HistGradientBoosting Regressor (Champion)** | **29.82 m** | **33.74 m** | **39.51 m** | **45.18 m** | **0.6210** | **0.4293** |
 
 ### Benchmark Takeaways
 - **HistGradientBoostingRegressor** achieved superior generalization on unseen forward telemetry, with a **Test MAE of 33.74 minutes** and **Test R² of 0.4293**.
-- Serialized to `models/waiting_time_model.pkl` with full preprocessing pipeline and schema metadata in `models/model_metadata.json`.
+- Non-linear tree boosting effectively captured complex interaction effects between arrival hour, facility tier, and concurrent regional workload without target leakage.
 
 ---
 
-## Dashboard
+## Frontend Clinical Decision Support Dashboard
 
-The HealthFlow interactive web application is consolidated into [`healthflow.py`](file:///c:/Users/rs011/OneDrive/Desktop/New%20folder%20%288%29/healthflow.py) with full Light & Dark mode enterprise styling, delivering 7 comprehensive modules:
+The complete frontend application code, UI styling, and visualization modules are embedded directly within Section 12 of [`Rohan_HealthFlow.ipynb`](./Rohan_HealthFlow.ipynb), featuring:
 
-1. **Overview**: Executive KPI cards (Total Records, Mean Wait, Median Wait, Peak Hour, Congested Facility), distribution histogram, 24-hour diurnal profile with zero title/legend collisions, and facility workload ranking bars.
-2. **Patient Flow**: Longitudinal volume trends over time, 7-day moving average, day-of-week breakdown, and comprehensive department workload metrics tables.
-3. **Waiting Time Analytics**: Queue delay analysis with 10th-to-90th percentile diurnal delay bands, waiting time dispersion boxplots, and Day × Hour congestion heatmaps.
-4. **AI/ML Prediction Engine**: Interactive scenario calculator allowing users to select hospital facility, arrival hour, day of week, month, and system congestion level, outputting instant predicted waiting times, confidence intervals, and mandatory healthcare disclaimers.
-5. **Operational Insights**: Evidence-based findings categorized across Temporal Patterns, Facility Taxonomy, Day-of-Week Dynamics, and Operational Risk with actionable clinical management recommendations.
-6. **Data Explorer**: Searchable, filterable interactive table with dynamic facility and date filters and instant CSV export capability.
-7. **Model Information**: Architecture specifications, benchmark comparison tables, feature importance rankings, and data leakage safeguards.
+1. **Overview & Executive KPIs**: High-level metrics (Total Observations, Mean Wait, Median Wait, Peak Surge Hour, Most Congested Facility), 24-hour diurnal profile, and department workload rankings.
+2. **Patient Flow Analytics**: Longitudinal daily telemetry volume trends, 7-day moving averages, day-of-week breakdown, and comprehensive department metrics tables.
+3. **Waiting Time Analytics**: Queue delay analysis with 10th-to-90th percentile diurnal delay bands, waiting time dispersion histograms, and facility tier disparities.
+4. **AI/ML Scenario Prediction Engine**: Interactive clinical calculator allowing users to select facility, arrival hour, day of week, and system congestion level, generating predicted waiting times, confidence intervals, and clinical disclaimers.
+5. **Operational Insights**: Evidence-based findings organized by Temporal Patterns, Facility Taxonomy, Day-of-Week Dynamics, and Operational Risk with actionable clinical management recommendations.
+6. **Data Explorer**: Searchable, filterable interactive table with dynamic facility and date filters and instant CSV export.
+7. **Model Information & Transparency**: Architecture specifications, benchmark comparison tables, feature importance rankings, and data leakage prevention safeguards.
 
 ---
 
 ## Technologies Used
 
-- **Python 3.12**
-- **Pandas** (>=2.0.0)
-- **NumPy** (>=1.24.0)
-- **Scikit-Learn** (>=1.3.0)
-- **Matplotlib** (>=3.7.0)
-- **Plotly** (>=5.15.0)
-- **Streamlit** (>=1.25.0)
-- **Joblib** (>=1.3.0)
-- **Jupyter Notebook**
-- **Python-docx** (>=1.1.0)
-- **Pytest** (>=7.4.0)
+- **Python 3.10+ / 3.12**
+- **Pandas** (>=2.0.0) — High-performance data manipulation and cleaning
+- **NumPy** (>=1.24.0) — Numerical operations and array transformations
+- **Scikit-Learn** (>=1.3.0) — Preprocessing, Ridge, Random Forest, and HistGradientBoosting regressors
+- **Matplotlib** (>=3.7.0) — Inline analytical visualizations
+- **Plotly** (>=5.15.0) — Interactive charts and percentile delay bands
+- **Streamlit** (>=1.25.0) — Clinical decision support dashboard UI framework
+- **Joblib** (>=1.3.0) — Model pipeline serialization
+- **Jupyter Notebook** — Interactive notebook environment
 
 ---
 
-## Project Structure
+## Submission Package Details
+
+The project is packaged strictly into the **four Google Form submission files**:
 
 ```
-HealthFlow/
+HealthFlow Submission Package (Google Form Files):
 │
-├── healthflow.py                                  # Consolidated main Streamlit enterprise application
-├── Rohan_HealthFlow.ipynb                         # 32-section end-to-end executable Jupyter Notebook
-├── Rohan_HealthFlowProjectReport.docx             # Academic project report in Microsoft Word format
-├── requirements.txt                               # Exact pinned dependencies
-├── README.md                                      # Comprehensive project documentation
-├── DATASET.md                                     # Dataset provenance and schema
-├── LICENSE                                        # MIT License
-├── pytest.ini                                     # Pytest configuration
-│
-├── data/
-│   ├── raw/
-│   │   └── alberta_emergency_wait_times.csv       # 66,197 raw telemetry records
-│   └── processed/
-│       ├── healthflow_cleaned.csv                 # 59,663 cleaned records
-│       └── healthflow_features.csv                # Feature-engineered dataset
-│
-├── models/
-│   ├── waiting_time_model.pkl                     # Serialized Gradient Boosting Pipeline
-│   └── model_metadata.json                        # Benchmark metrics and schema config
-│
-├── notebooks/
-│   └── healthflow_analysis.ipynb                  # Exploratory research notebook
-│
-├── src/                                           # Underlying modular engines
-│   ├── config.py                                  # Paths, taxonomies, and styling tokens
-│   ├── data_ingestion.py                          # Ingestion and checksum verification
-│   ├── data_cleaning.py                           # Audit, sentinel removal, deduplication
-│   ├── feature_engineering.py                     # Temporal & workload feature derivation
-│   ├── analysis.py                                # Statistical KPI and insights engine
-│   ├── train_model.py                             # ML training, evaluation, and serialization
-│   └── prediction.py                              # Real-time inference engine
-│
-└── screenshots/                                   # UI walkthrough captures
+├── Rohan_HealthFlow.ipynb             # Single complete code submission (Backend pipeline, ML models, Frontend dashboard)
+├── requirements.txt                   # Exact Python package dependencies
+├── Rohan_HealthFlowProjectReport.docx # Comprehensive Academic Project Report (Microsoft Word)
+└── README.md                          # Comprehensive project documentation & execution guide
 ```
+
+### File Breakdown:
+1. **`Rohan_HealthFlow.ipynb`**:
+   - The single complete code submission file containing both backend and frontend.
+   - Houses data ingestion, sentinel filtering, feature engineering, statistical EDA, ML training and benchmarking, and the full multi-page Streamlit clinical dashboard code.
+2. **`requirements.txt`**:
+   - Lists the exact third-party Python packages required to run the code.
+3. **`Rohan_HealthFlowProjectReport.docx`**:
+   - The formal academic internship project report detailing clinical motivation, methodology, experimental results, and operational insights.
+4. **`README.md`**:
+   - Complete project documentation, operational architecture, benchmark results, and execution guide.
 
 ---
 
-## Installation
+## Execution Guide
 
-### 1. Create and Activate a Virtual Environment
-```bash
-python -m venv .venv
-```
+### 1. Set Up Environment & Install Dependencies
+Open a terminal in the folder containing the submission files, create a virtual environment, and install dependencies:
 
-**Windows:**
+**Windows (PowerShell):**
 ```powershell
+python -m venv .venv
 .venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
 **Linux / macOS:**
 ```bash
+python -m venv .venv
 source .venv/bin/activate
-```
-
-### 2. Install Required Dependencies
-```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Running the Dashboard
-
-Launch the consolidated interactive HealthFlow enterprise application:
-```bash
-streamlit run healthflow.py
-```
-Open your browser at `http://localhost:8501`.
-Open your browser at `http://localhost:8501`.
-
----
-
-## Running the Notebook
-
-To view, inspect, and execute the complete 32-section submission code:
+### 2. Run the Complete Project Notebook (`Rohan_HealthFlow.ipynb`)
+Open and execute `Rohan_HealthFlow.ipynb` using Jupyter Notebook, JupyterLab, VS Code, or Google Colab:
 
 ```bash
 jupyter notebook Rohan_HealthFlow.ipynb
 ```
-Or open `Rohan_HealthFlow.ipynb` directly in VS Code / Antigravity IDE and run the cells sequentially.
+
+In the notebook interface, click **Kernel -> Restart & Run All** (or **Run All** in VS Code).
+
+#### What Executes During Notebook Run:
+- **Sections 1–2**: Loads libraries, sets up logging, and configures healthcare facility taxonomies and health zones.
+- **Section 3**: Ingests and audits the 66,197 operational records from the authentic Alberta Health Services telemetry dataset.
+- **Section 4**: Cleans data and removes 6,534 closed/offline sentinel records (`waitTime < 0`), deduplicating timestamps and retaining 59,663 valid observations.
+- **Section 5**: Derives leakage-free temporal and concurrent workload features available at patient arrival.
+- **Sections 6–7**: Computes statistical distributions and displays interactive Plotly charts directly inline (diurnal profiles, percentiles, facility workload).
+- **Sections 8–11**: Performs chronological 80/20 train/test split, trains Ridge, Random Forest, and HistGradientBoosting models, and prints evaluation metrics (MAE, RMSE, R²).
+- **Section 12**: Contains the complete, self-contained interactive Streamlit Clinical Decision Support Dashboard application code.
 
 ---
 
-## Results
+## Key Operational Insights & Recommendations
 
-1. **Clean Data Retention**: 59,663 valid telemetry observations retained after filtering 6,534 sentinel records (`waitTime < 0`) and duplicates.
-2. **Diurnal Cycle Quantification**: Average waiting times peak at 17:00–19:00 (~118 minutes) and reach a nadir at 05:00–07:00 (~52 minutes), reflecting a **127% surge**.
-3. **Predictive Performance**: The HistGradientBoosting model achieves a **Test MAE of 33.74 minutes**, **Test RMSE of 45.18 minutes**, and **Test R² of 0.4293** on unseen future telemetry.
-4. **Feature Impact**: Concurrent system load, arrival hour of day, and facility operational tier were identified as the primary drivers of queue delay variance.
+All findings are derived directly from actual telemetry data:
 
----
-
-## Key Insights
-
-All findings are derived directly from actual dataset metrics:
-
-1. **Diurnal Congestion Cycle**: Waiting times surge from 12:00 to 22:00 daily, peaking in late afternoon.  
-   *Recommendation*: Stagger emergency clinical staffing shifts to overlap with the afternoon/evening surge window rather than static 8-hour shifts.
-2. **Facility Tier Disparities**: Level 1 trauma and academic tertiary centres experience average waiting times exceeding 115–125 minutes, whereas community clinics average under 50–60 minutes.  
+1. **Diurnal Congestion Cycle**: Waiting times surge from 12:00 to 22:00 daily, peaking in late afternoon (~118 minutes).  
+   *Recommendation*: Stagger emergency clinical staffing shifts to overlap with the afternoon/evening surge window rather than traditional static 8-hour shifts.
+2. **Facility Tier Disparities**: Academic tertiary trauma centres experience average waiting times exceeding 115–125 minutes, whereas community clinics average under 50–60 minutes.  
    *Recommendation*: Implement regional patient transit advisories to divert non-emergent ambulatory patients (CTAS 4–5) to nearby community urgent care clinics.
 3. **Day-of-Week Load Dynamics**: Weekday waiting times average 96.1 minutes compared to 90.2 minutes on weekends, with mid-week surges driven by delayed primary care access.  
-   *Recommendation*: Schedule elective outpatient follow-ups away from peak weekday surge days to prevent hospital bed boarding.
+   *Recommendation*: Schedule elective outpatient follow-ups away from peak weekday surge days to mitigate bed boarding in emergency observation units.
 4. **Queue Tail Risk (90th Percentile Delay)**: While median wait time is 79.0 minutes, the 90th percentile wait reaches 183.0 minutes, with peak facilities exceeding 4 hours.  
    *Recommendation*: Deploy automated operational alerts when facility waiting times exceed 150 minutes to activate rapid medical evaluation (RME) pods and fast-track discharge protocols.
 
@@ -348,17 +339,17 @@ All findings are derived directly from actual dataset metrics:
 ## Limitations
 
 - **Triage Acuity Priority**: Public telemetry records operational waiting times for mid-acuity arrivals. Patients presenting with immediately life-threatening conditions (resuscitation CTAS 1) bypass queue waiting times and are treated immediately.
-- **Regional Model Specifics**: The data reflects Canadian publicly funded emergency care in Alberta; cross-border transferability to fee-for-service healthcare systems requires local recalibration.
+- **Regional Model Specifics**: The data reflects Canadian publicly funded emergency care in Alberta; transferability to other healthcare structures requires local operational recalibration.
 - **Operational Scope**: HealthFlow is an administrative analytics and queue management platform; it does not offer clinical diagnosis, triage classification, or patient treatment advice.
 
 ---
 
 ## Future Improvements
 
-1. Integration of weather telemetry (ambient temperature, blizzard warnings) to evaluate environmental impact on emergency visits.
-2. Real-time Fast Healthcare Interoperability Resources (FHIR) API connectors for electronic health record (EHR) streaming.
-3. Queue-length simulation using discrete event modeling (SimPy) to model bed occupancy and doctor service times.
-4. Containerized cloud deployment via Docker and Kubernetes for hospital enterprise integration.
+1. **Environmental Telemetry**: Integrate ambient weather data (blizzards, extreme cold) to analyze seasonal influxes.
+2. **FHIR / EHR Interoperability**: Stream live clinical queue metrics using HL7/FHIR interfaces.
+3. **Queue-Length Simulation**: Implement SimPy discrete-event modeling to simulate hospital bed occupancy and physician service times.
+4. **Cloud Scalability**: Containerized deployment for hospital network integration.
 
 ---
 
